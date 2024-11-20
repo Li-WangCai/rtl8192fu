@@ -323,7 +323,11 @@ struct rtw_usb_drv usb_drv = {
 #endif
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 19))
-	.usbdrv.drvwrap.driver.shutdown = rtw_dev_shutdown,
+//old version
+//	.usbdrv.drvwrap.driver.shutdown = rtw_dev_shutdown,
+//modified by Yun ZHOU to 
+	.usbdrv.driver.shutdown = (void*) rtw_dev_shutdown,
+//end modification
 #else
 	.usbdrv.driver.shutdown = rtw_dev_shutdown,
 #endif
